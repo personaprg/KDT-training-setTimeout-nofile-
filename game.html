@@ -48,6 +48,57 @@
     <div class="dot-target"></div>
   </div>
 
+  <script>
+    const container = document.querySelector(".container");
+    const score = document.querySelector("#score");
+    const playtime = document.querySelector("#playtime");
+    const dotTarget = document.querySelector(".dot-target");
+    const playButton = document.querySelector("#play");
+
+    const randomX = () => Math.floor(Math.random() * (container.clientWidth - 20));
+    const randomY = () => Math.floor(Math.random() * (container.clientHeight - 20));
+
+    // 플레이 버튼 클릭 이벤트
+    playButton.addEventListener("click", () => {
+      // 제한시간을 10초로 설정
+      playtime.textContent = 10;
+
+      // 점수를 0으로 설정
+      score.textContent = 0;
+
+      // 점찍기 요소를 랜덤 위치에 생성
+      dotTarget.style.left = `${randomX()}px`;
+      dotTarget.style.top = `${randomY()}px`;
+
+      // 점찍기 요소에 클릭 이벤트를 설치
+      dotTarget.addEventListener("click", () => {
+        // 점수를 1 증가
+        score.textContent++;
+
+        // 점찍기 요소를 제거
+        dotTarget.style.left = `${randomX()}px`;
+        dotTarget.style.top = `${randomY()}px`;
+
+        // 제한시간을 1초 줄임
+        playtime.textContent--;
+
+        // 제한시간이 0이 되면 게임 종료
+        if (playtime.textContent == 0) {
+          alert("게임 종료! 점수는 " + score.textContent + "점입니다.");
+        }
+      });
+
+      // 플레이 버튼을 누를 때부터 시간이 감소하도록
+      const timer = setInterval(() => {
+        playtime.textContent--;
+
+        if (playtime.textContent == 0) {
+          clearInterval(timer);
+          alert("게임 종료! 점수는 " + score.textContent + "점입니다.");
+        }
+      }, 1000);
+    });
+  </script>
 
 </body>
 
