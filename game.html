@@ -1,20 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>게임</title>
+  <style>
+    /* dot-target에 대한 시각적 스타일링 추가 */
+    .dot-target {
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    /* container에 대한 스타일링 추가 */
+    .container {
+      width: 800px;
+      height: 800px;
+      background-color: lightgray;
+      position: relative;
+    }
+
+    /* 오른쪽에 배치하기 위한 스타일 추가 */
+    .sidebar {
+      position: absolute;
+      top: 0;
+      left: 810px;
+      width: 200px;
+      padding: 10px;
+    }
+  </style>
 </head>
+
 <body>
   <div class="container">
-    <div class="score">
-      <p>점수: <span id="score">0</span></p>
-    </div>
-    <div class="playtime">
-      <p>제한시간: <span id="playtime">5</span>초</p>
+    <div class="sidebar">
+      <div class="score">
+        <p>점수: <span id="score">0</span></p>
+      </div>
+      <div class="playtime">
+        <p>제한시간: <span id="playtime">10</span>초</p>
+      </div>
+      <button id="play">플레이</button>
     </div>
     <div class="dot-target"></div>
-    <button id="play">플레이</button>
   </div>
+
+
 </body>
+
 </html>
